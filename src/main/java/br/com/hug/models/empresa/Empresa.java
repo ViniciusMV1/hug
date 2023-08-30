@@ -24,6 +24,9 @@ public class Empresa {
     public Empresa(String cnpj, String nome, Endereco endereco, String telefone) {
     }
 
+    public Empresa(String cnpj, String nome, Endereco endereco, String telefone) {
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
