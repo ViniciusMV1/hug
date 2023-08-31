@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pessoa {
+public abstract class Pessoa {
     @Id
     private String cpf;
     private String nome;
