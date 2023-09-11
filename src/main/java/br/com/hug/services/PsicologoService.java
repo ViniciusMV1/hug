@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class PsicologoService {
 
-    private final PsicologoRepository psicologoRepository;
+    private static PsicologoRepository psicologoRepository = null;
     private final PsicologoRepository psicologo;
 
     @Autowired
@@ -24,7 +24,6 @@ public class PsicologoService {
         this.psicologo = psicologo;
 
         }
-    }
 
     @Transactional
     public Psicologo criar(Psicologo psicologo) {
@@ -39,7 +38,7 @@ public class PsicologoService {
         psicologoRepository.deleteById(crp);
     }
 
-    public List<Psicologo> buscarTodos(){
+    public static List<Psicologo> buscarTodos(){
         return psicologoRepository.findAll();
     }
 
