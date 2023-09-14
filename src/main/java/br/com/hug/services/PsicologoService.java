@@ -15,15 +15,8 @@ import java.util.Optional;
 @Service
 public class PsicologoService {
 
-    private static PsicologoRepository psicologoRepository = null;
-    private final PsicologoRepository psicologo;
-
     @Autowired
-    public PsicologoService(PsicologoRepository psicologoRepository, PsicologoRepository psicologo) {
-        this.psicologoRepository = psicologoRepository;
-        this.psicologo = psicologo;
-
-        }
+    private PsicologoRepository psicologoRepository;
 
     @Transactional
     public Psicologo criar(Psicologo psicologo) {
@@ -38,17 +31,33 @@ public class PsicologoService {
         psicologoRepository.deleteById(crp);
     }
 
-    public static List<Psicologo> buscarTodos(){
+    public List<Psicologo> buscarTodos(){
         return psicologoRepository.findAll();
     }
 
     public Psicologo atualizar (String crp, Psicologo psicologo) {
+        //
+        var psicologo1 = psicologoRepository.findById(crp);
+        if(psicologo1.isPresent()) {
+            if (psicologo.getNome() != null) {
+                psicologo1.get().setNome(psicologo.getNome());
+            }
+            if (psicologo.getCrp() != null) {
+                psicologo1.get().setCrp(psicologo.getCrp());
 
-    var psicologo1 = psicologoRepository.findById(crp);
-    psicologo1.get().setCrp(psicologo.getCrp());
-    psicologo1.get().setNome(psicologo.getNome());
-    psicologo1.get().setEndereco(psicologo.getEndereco());
-    psicologo1.get().setTelefone(psicologo.getTelefone());
-    return psicologoRepository.save(psicologo1.get());
-}
+            }
+            if (psicologo.getEndereco() !=null) {
+                psicologo1.get().setEndereco(psicologo.getEndereco());
+
+            }
+            if (psicologo.getTelefone() != null) {
+                psicologo1.get().setTelefone(psicologo.getTelefone());
+
+            }
+            return psicologoRepository.save(psicologo1.get());
+        }
+
+
+        return null;
+    }
 }
