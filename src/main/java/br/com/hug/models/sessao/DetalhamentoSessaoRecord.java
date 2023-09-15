@@ -1,7 +1,7 @@
 package br.com.hug.models.sessao;
 
 import br.com.hug.models.Paciente;
-import br.com.hug.models.Psicologo;
+import br.com.hug.models.psicologo.Psicologo;
 import br.com.hug.models.nota.Nota;
 
 import java.time.LocalDateTime;
