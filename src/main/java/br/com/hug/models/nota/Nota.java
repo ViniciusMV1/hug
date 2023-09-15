@@ -1,4 +1,4 @@
-package br.com.hug.models;
+package br.com.hug.models.nota;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

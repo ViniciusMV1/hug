@@ -1,8 +1,10 @@
 package br.com.hug.services;
 
-import br.com.hug.models.Sessao;
+import br.com.hug.models.sessao.Sessao;
 import br.com.hug.repositories.SessaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,12 +20,12 @@ public class SessaoService {
     }
 
     public Sessao buscarPorId(Long id) {
-        return sessaoRepository.findById(cpf)
+        return sessaoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Sessão não encontrada"));
     }
 
-    public List<Sessao> buscarTodos() {
-        return sessaoRepository.findAll();
+    public Page<Sessao> buscarTodos(Pageable page) {
+        return sessaoRepository.findAll(page);
     }
 
     public void deletar(Long cpf) {
@@ -34,7 +36,7 @@ public class SessaoService {
         Sessao sessaoAtual = (Sessao) sessaoRepository.findById(cpf)
                 .orElseThrow(() -> new RuntimeException("Sessão não encontrada"));
 
-        sessaoAtual.setCpf(sessaoAtualizada.getCpf());
+        //sessaoAtual.setCpf(sessaoAtualizada.getCpf());
         sessaoAtual.setData(sessaoAtualizada.getData());
         sessaoAtual.setNota(sessaoAtualizada.getNota());
         sessaoAtual.setPaciente(sessaoAtualizada.getPaciente());

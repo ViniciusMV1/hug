@@ -1,6 +1,8 @@
 package br.com.hug.controller;
 
-import br.com.hug.models.servicos.NotaService;
+import br.com.hug.models.nota.DetalhamentoNotaRecord;
+import br.com.hug.models.nota.NotaRecord;
+import br.com.hug.services.NotaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,7 @@ public class NotaController {
     @GetMapping
     public ResponseEntity buscarTodos() {
         var notas = notaService.buscarTodos();
-        return ResponseEntity.ok(notas.map(NotaRecord::new));
+        return ResponseEntity.ok(notas.stream().map(DetalhamentoNotaRecord::new));
     }
 
     @GetMapping("/{id}")

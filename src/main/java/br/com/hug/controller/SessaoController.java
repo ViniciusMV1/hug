@@ -1,8 +1,9 @@
 package br.com.hug.controller;
-import br.com.hug.models.services.SessaoService;
+import br.com.hug.models.sessao.DetalhamentoSessaoRecord;
+import br.com.hug.models.sessao.SessaoRecord;
+import br.com.hug.services.SessaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -20,15 +21,15 @@ public class SessaoController {
     @PostMapping
 
     public ResponseEntity criar(@RequestBody @Valid SessaoRecord sessao, UriComponentsBuilder uriBuilder) {
-        var sessao = sessaoService.criar(form.converter());
-        var uri = uriBuilder.path("/sessoes/{cpf}").buildAndExpand(sessaoCadastrada.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DetalhamentoSessaoRecord (sessaoCadastrada));
+        var sessaoAux = sessaoService.criar(sessao.converter());
+        var uri = uriBuilder.path("/sessoes/{cpf}").buildAndExpand(sessaoAux.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhamentoSessaoRecord(sessaoAux));
     }
 
     @GetMapping
      public ResponseEntity buscarTodos(@PageableDefault(size = 5, sort = {"paciente"}) Pageable pageable) {
         var sessoes = sessaoService.buscarTodos(pageable);
-        return ResponseEntity.ok(sessoes.map(SessaoRecord::new)); }
+        return ResponseEntity.ok(sessoes.stream().map((DetalhamentoSessaoRecord::new))); }
 
     @GetMapping("/{cpf}")
     public ResponseEntity buscarPorId(@PathVariable Long cpf) {

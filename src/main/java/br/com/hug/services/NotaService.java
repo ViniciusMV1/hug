@@ -1,6 +1,6 @@
 package br.com.hug.services;
 
-import br.com.hug.models.Nota;
+import br.com.hug.models.nota.Nota;
 import br.com.hug.repositories.NotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
