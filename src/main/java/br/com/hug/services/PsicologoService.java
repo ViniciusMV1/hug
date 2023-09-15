@@ -1,16 +1,13 @@
 package br.com.hug.services;
 
-import br.com.hug.models.Psicologo;
+import br.com.hug.models.psicologo.Psicologo;
 import br.com.hug.repositories.PsicologoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PsicologoService {

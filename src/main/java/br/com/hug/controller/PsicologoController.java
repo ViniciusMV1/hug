@@ -1,6 +1,6 @@
 package br.com.hug.controller;
 
-import br.com.hug.models.Psicologo;
+import br.com.hug.models.psicologo.Psicologo;
 import br.com.hug.services.PsicologoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

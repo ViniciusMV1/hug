@@ -1,6 +1,6 @@
 package br.com.hug.controller;
 
-import br.com.hug.models.Paciente;
+import br.com.hug.models.paciente.Paciente;
 import br.com.hug.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
