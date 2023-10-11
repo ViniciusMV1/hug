@@ -16,7 +16,11 @@ public class Psicologo extends Pessoa {
         this.crp = crp;
     }
 
-    public Psicologo(@NotNull @NotBlank @Size(min = 12, max = 12) @Pattern(regexp = "\\d{12}") String crp, @NotNull @NotBlank @Size(max = 100) String nome, @NotNull @NotBlank @Email @Size(max = 100) String email, @NotNull Endereco endereco, @NotNull @NotBlank @Size(max = 20) String telefone) {
+    /*public Psicologo(@NotNull @NotBlank @Size(min = 12, max = 12) @Pattern(regexp = "\\d{12}") String crp, @NotNull @NotBlank @Size(max = 100) String nome, @NotNull @NotBlank @Email @Size(max = 100) String email, @NotNull Endereco endereco, @NotNull @NotBlank @Size(max = 20) String telefone) {
+
+    }*/
+
+    public Psicologo() {
 
     }
 }

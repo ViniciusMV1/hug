@@ -37,7 +37,7 @@ public class NotaService {
         Optional<Nota> notaOptional = notaRepository.findById(cpf);
         Nota notaAtual = notaOptional.orElseThrow(() -> new RuntimeException("Nota não encontrada"));
 
-        notaAtual.setNota(notaAtualizada.getNota());
+        notaAtual.setTexto(notaAtualizada.getTexto());
 
         return notaRepository.save(notaAtual);
     }

@@ -1,8 +1,10 @@
 package br.com.hug.models.login;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import java.util.Collection;
 
-public interface usuario {
+public interface Usuario {
     Collection<? extends GrantedAuthority> getAuthorities();
 
     String getPassword();
