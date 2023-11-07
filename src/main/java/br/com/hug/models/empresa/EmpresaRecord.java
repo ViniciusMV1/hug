@@ -6,8 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public class EmpresaRecord {
-    public record FuncionarioRecord (
+public record EmpresaRecord (
             @NotNull
             @NotBlank
             @Size(min = 14, max = 14)
@@ -31,4 +30,3 @@ public class EmpresaRecord {
             return new Empresa (cnpj(), nome(), endereco(), telefone());
         }
     }
-}

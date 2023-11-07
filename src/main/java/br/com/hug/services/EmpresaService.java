@@ -11,7 +11,6 @@ import java.util.List;
 public class EmpresaService{
         private final EmpresaRepository empresaRepository;
 
-        @Autowired
         public EmpresaService(EmpresaRepository empresaRepository) {
             this.empresaRepository = empresaRepository;
         }
@@ -32,5 +31,7 @@ public class EmpresaService{
         public List<Empresa> buscarTodos(){
             return empresaRepository.findAll();
         }
+
+        //TODO: fazer o atualizar
     }
 

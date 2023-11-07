@@ -20,21 +20,17 @@ public class NotaService {
         return notaRepository.save(nota);
     }
 
-    public Nota buscarPorId(Long cpf) {
-        Optional<Nota> notaOptional = notaRepository.findById(cpf);
+    public Nota buscarPorId(Long id) {
+        Optional<Nota> notaOptional = notaRepository.findById(id);
         return notaOptional.orElseThrow(() -> new RuntimeException("Nota não encontrada"));
     }
 
-    public List<Nota> buscarTodos() {
-        return notaRepository.findAll();
+    public void deletar(Long id) {
+        notaRepository.deleteById(id);
     }
 
-    public void deletar(Long cpf) {
-        notaRepository.deleteById(cpf);
-    }
-
-    public Nota atualizar(Long cpf, Nota notaAtualizada) {
-        Optional<Nota> notaOptional = notaRepository.findById(cpf);
+    public Nota atualizar(Long id, Nota notaAtualizada) {
+        Optional<Nota> notaOptional = notaRepository.findById(id);
         Nota notaAtual = notaOptional.orElseThrow(() -> new RuntimeException("Nota não encontrada"));
 
         notaAtual.setTexto(notaAtualizada.getTexto());
@@ -42,8 +38,8 @@ public class NotaService {
         return notaRepository.save(notaAtual);
     }
 
-    public boolean existeNota(Long cpf) {
-        return notaRepository.existsById(cpf);
+    public boolean existeNota(Long id) {
+        return notaRepository.existsById(id);
     }
 
     public Page<Nota> buscarTodos(Pageable pageable) {

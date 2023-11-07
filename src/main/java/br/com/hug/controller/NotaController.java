@@ -5,6 +5,8 @@ import br.com.hug.models.nota.NotaRecord;
 import br.com.hug.services.NotaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -24,8 +26,8 @@ public class NotaController {
     }
 
     @GetMapping
-    public ResponseEntity buscarTodos() {
-        var notas = notaService.buscarTodos();
+    public ResponseEntity buscarTodos(@PageableDefault Pageable pageable) {
+        var notas = notaService.buscarTodos(pageable);
         return ResponseEntity.ok(notas.stream().map(DetalhamentoNotaRecord::new));
     }
 
