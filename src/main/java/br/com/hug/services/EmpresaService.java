@@ -32,6 +32,14 @@ public class EmpresaService{
             return empresaRepository.findAll();
         }
 
-        //TODO: fazer o atualizar
+    public boolean existeEmpresa(String cnpj) {
+            return empresaRepository.existsById(cnpj);
+    }
+
+    public Empresa atualizar(String cnpj, Empresa toEmpresa) {
+            return null;
+    }
+
+    //TODO: fazer o atualizar
     }
 
