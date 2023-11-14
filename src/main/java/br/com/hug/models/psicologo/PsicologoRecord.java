@@ -12,9 +12,9 @@ public record PsicologoRecord(
 
         @NotNull
         @NotBlank
-        @Size(min = 12, max = 12)
-        @Pattern(regexp = "\\d{12}")
-        String crp,
+        @Size(min = 11, max = 11)
+        @Pattern(regexp = "\\d{11}")
+        String cpf,
 
         @NotNull
         @NotBlank
@@ -33,10 +33,15 @@ public record PsicologoRecord(
         @NotNull
         @NotBlank
         @Size(max = 20)
-        String telefone
+        String telefone,
+        @NotNull
+        @NotBlank
+        @Size(min = 12, max = 12)
+        @Pattern(regexp = "\\d{12}")
+        String crp
 ) {
     public Psicologo converter() {
-        return new Psicologo(crp(), nome(), email(), endereco(), telefone());
+        return new Psicologo(cpf(), nome(), email(), telefone(), endereco(), crp());
     }
 
 }
