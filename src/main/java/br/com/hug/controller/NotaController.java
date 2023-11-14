@@ -4,6 +4,7 @@ import br.com.hug.models.nota.DetalhamentoNotaRecord;
 import br.com.hug.models.nota.NotaRecord;
 import br.com.hug.services.NotaService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -50,6 +51,7 @@ public class NotaController {
     }
 
     @PutMapping("/{id}")
+
     public ResponseEntity atualizar(@PathVariable Long id, @RequestBody @Valid NotaRecord notaAtualizada) {
         if (!notaService.existeNota(id)) {
             return ResponseEntity.notFound().build();

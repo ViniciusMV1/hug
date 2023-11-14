@@ -1,8 +1,7 @@
 package br.com.hug.controller;
 
-import br.com.hug.models.empresa.EmpresaAtualizarRecord;
+import br.com.hug.models.empresa.EmpresaResponse;
 import br.com.hug.models.empresa.EmpresaRecord;
-import br.com.hug.models.nota.DetalhamentoNotaRecord;
 import br.com.hug.services.EmpresaService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -44,8 +43,7 @@ public class EmpresaController {
         if (!empresaService.existeEmpresa(cnpj)) {
             return ResponseEntity.notFound().build();
         }
-        var notaAtual = empresaService.atualizar(cnpj, empresa.toEmpresa());
-        return ResponseEntity.ok(new EmpresaAtualizarRecord(notaAtual));
+        var empresa1 = empresaService.atualizar(cnpj, empresa.toEmpresa());
+        return ResponseEntity.ok(new EmpresaResponse(empresa1));
     }
     }
-}

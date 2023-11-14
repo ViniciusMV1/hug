@@ -18,4 +18,7 @@ public class Nota {
     private String texto;
     @ManyToOne
     private Paciente paciente;
+
+
+
 }
