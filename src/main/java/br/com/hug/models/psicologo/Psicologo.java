@@ -19,7 +19,7 @@ public class Psicologo extends Pessoa {
 
     }*/
 
-    public Psicologo() {
+    public Psicologo(Psicologo psicologo1) {
 
     }
 }

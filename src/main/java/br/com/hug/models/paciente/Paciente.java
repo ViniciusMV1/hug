@@ -21,7 +21,10 @@ public class Paciente extends Pessoa {
         this.empresa = empresa;
     }
 
-    public Paciente() {
+    public Paciente(String cpf, String nome, String email, String telefone, Endereco endereco, Empresa empresa) {
+        super(cpf, nome, email, telefone, endereco);
+        this.empresa = empresa;
+    }") {
 
     }
 }

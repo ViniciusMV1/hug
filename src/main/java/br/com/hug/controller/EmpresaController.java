@@ -45,5 +45,8 @@ public class EmpresaController {
         }
         var empresa1 = empresaService.atualizar(cnpj, empresa.toEmpresa());
         return ResponseEntity.ok(new EmpresaResponse(empresa1));
+
     }
+
     }
+

@@ -1,13 +1,14 @@
 package br.com.hug.controller;
 
+import br.com.hug.models.empresa.EmpresaRecord;
+import br.com.hug.models.empresa.EmpresaResponse;
 import br.com.hug.models.paciente.Paciente;
+import br.com.hug.models.paciente.PacienteRecord;
 import br.com.hug.services.PacienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/pacientes")
@@ -26,6 +27,16 @@ public class PacienteController {
         var pacientes = pacienteService.buscarTodos();
         return ResponseEntity.ok(pacientes);
     }
+
+    @PutMapping("/{cpf}")
+    public ResponseEntity atualizar(@PathVariable String cpf, @RequestBody @Valid PacienteRecord paciente){
+        if (!pacienteService.existePaciente(cpf)) {
+            return ResponseEntity.notFound().build();
+        }
+        var paciente1 = pacienteService.atualizar(paciente);
+        return ResponseEntity.ok(paciente1);
+    }
+
 
 
 

@@ -57,4 +57,8 @@ public class PsicologoService {
 
         return null;
     }
+
+    public boolean existePsicologo(String crp) {
+        return psicologoRepository.existsById(crp);
+    }
 }
