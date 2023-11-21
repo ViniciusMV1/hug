@@ -1,4 +1,4 @@
-package br.com.hug.models.login;
+/*package br.com.hug.models.login;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -19,3 +19,4 @@ public interface Usuario {
 
     boolean isEnabled();
 }
+*/

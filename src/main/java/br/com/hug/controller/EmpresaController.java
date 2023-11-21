@@ -19,7 +19,7 @@ public class EmpresaController {
     }
 
     @PostMapping
-    public ResponseEntity criar (@RequestBody @Valid EmpresaRecord empresa, UriComponentsBuilder builder){
+    public ResponseEntity criar(@RequestBody @Valid EmpresaRecord empresa, UriComponentsBuilder builder) {
         var aux = empresa.toEmpresa();
         aux = empresaService.criar(aux);
         var uri = builder.path("/empresa/{cnpj}").buildAndExpand(aux.getCnpj()).toUri();
@@ -27,19 +27,19 @@ public class EmpresaController {
     }
 
     @GetMapping("/{cnpj}")
-    public ResponseEntity buscar(@PathVariable String cnpj){
+    public ResponseEntity buscar(@PathVariable String cnpj) {
         var aux = empresaService.buscar(cnpj);
         return ResponseEntity.ok(aux);
     }
 
     @DeleteMapping("/{cnpj}")
-    public ResponseEntity delete(@PathVariable String cnpj){
+    public ResponseEntity delete(@PathVariable String cnpj) {
         empresaService.deletar(cnpj);
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping ("/{cnpj}")
-    public ResponseEntity atualizar(@PathVariable String cnpj, @RequestBody @Valid EmpresaRecord empresa){
+    @PutMapping("/{cnpj}")
+    public ResponseEntity atualizar(@PathVariable String cnpj, @RequestBody @Valid EmpresaRecord empresa) {
         if (!empresaService.existeEmpresa(cnpj)) {
             return ResponseEntity.notFound().build();
         }
@@ -48,5 +48,13 @@ public class EmpresaController {
 
     }
 
+    //TODO: Implementar o método de busca todos
+
+    @GetMapping()
+    public ResponseEntity buscarTodos() {
+        var empresas = empresaService.buscarTodos();
+        return ResponseEntity.ok(empresas.stream().map(EmpresaResponse::new));
+
     }
 
+}

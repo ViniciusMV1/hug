@@ -1,6 +1,7 @@
 package br.com.hug.services;
 
 import br.com.hug.models.empresa.Empresa;
+import br.com.hug.models.paciente.Paciente;
 import br.com.hug.repositories.EmpresaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -8,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
-public class EmpresaService{
-        private final EmpresaRepository empresaRepository;
+public class EmpresaService {
+    private final EmpresaRepository empresaRepository;
 
-        private final ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
 
     public EmpresaService(EmpresaRepository empresaRepository, ModelMapper modelMapper) {
@@ -24,15 +25,15 @@ public class EmpresaService{
         return empresaRepository.save(empresa);
     }
 
-    public Empresa buscar(String cnpj){
+    public Empresa buscar(String cnpj) {
         return empresaRepository.getById(cnpj);
     }
 
-    public void deletar(String cnpj){
+    public void deletar(String cnpj) {
         empresaRepository.deleteById(cnpj);
     }
 
-    public List<Empresa> buscarTodos(){
+    public List<Empresa> buscarTodos() {
         return empresaRepository.findAll();
     }
 
@@ -42,12 +43,14 @@ public class EmpresaService{
 
     public Empresa atualizar(String cnpj, Empresa empresa) {
         var empresaAux = empresaRepository.findById(cnpj);
-        if(empresaAux.isPresent()){
+        if (empresaAux.isPresent()) {
             modelMapper.map(empresa, empresaAux.get());
             return empresaRepository.save(empresaAux.get());
         }
         throw new RuntimeException("Empresa não encontrada no banco de dados.");
     }
+
+
 
 }
 

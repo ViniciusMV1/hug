@@ -48,4 +48,6 @@ public class SessaoService {
     public boolean existeSessao(Long cpf) {
         return sessaoRepository.existsById(cpf);
     }
+
+    public List<Sessao> buscarTodos() {return sessaoRepository.findAll();}
 }

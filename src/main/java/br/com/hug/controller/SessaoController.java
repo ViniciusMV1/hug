@@ -52,5 +52,8 @@ public class SessaoController {
         return ResponseEntity.ok(new DetalhamentoSessaoRecord(sessaoAtual));
     }
 
+    //TODO: Implementar o método de busca todos
+
+
 
 }

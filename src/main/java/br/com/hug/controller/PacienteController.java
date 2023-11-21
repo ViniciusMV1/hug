@@ -28,6 +28,13 @@ public class PacienteController {
         return ResponseEntity.ok(pacientes);
     }
 
+    @DeleteMapping("/{cpf}")
+    public  ResponseEntity delete(@PathVariable String cpf){
+        pacienteService.deletar(cpf);
+        return ResponseEntity.notFound().build();
+    }
+
+
     @PutMapping("/{cpf}")
     public ResponseEntity atualizar(@PathVariable String cpf, @RequestBody @Valid PacienteRecord paciente){
         if (!pacienteService.existePaciente(cpf)) {
@@ -35,6 +42,14 @@ public class PacienteController {
         }
         var paciente1 = pacienteService.atualizar(paciente);
         return ResponseEntity.ok(paciente1);
+    }
+
+    //TODO: Implementar o método de busca por cpf
+
+    @GetMapping("/{cpf}")
+    public ResponseEntity buscar(@PathVariable String cpf){
+        var aux = pacienteService.buscar(cpf);
+        return ResponseEntity.ok(aux);
     }
 
 

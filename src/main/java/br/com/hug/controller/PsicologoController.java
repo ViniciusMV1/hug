@@ -2,7 +2,9 @@ package br.com.hug.controller;
 
 import br.com.hug.models.empresa.EmpresaRecord;
 import br.com.hug.models.empresa.EmpresaResponse;
+import br.com.hug.models.psicologo.DetalhamentoPsicologoRecord;
 import br.com.hug.models.psicologo.Psicologo;
+import br.com.hug.models.sessao.DetalhamentoSessaoRecord;
 import br.com.hug.services.PsicologoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,14 @@ public class PsicologoController {
                 return ResponseEntity.notFound().build();
             }
             var psicologo1 = psicologoService.atualizar(crp, psicologo);
-            return ResponseEntity.ok(new Psicologo(psicologo1));
+            return ResponseEntity.ok(new DetalhamentoPsicologoRecord(psicologo1));
+        }
+
+        @GetMapping("/{crp}")
+        public ResponseEntity buscarPorId (@PathVariable String crp) {
+        var psicologo = psicologoService.buscar(crp);
+            if (psicologo!=null) return ResponseEntity.ok(new DetalhamentoPsicologoRecord(psicologo));
+            return ResponseEntity.notFound().build();
         }
 
 

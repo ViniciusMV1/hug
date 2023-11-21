@@ -4,9 +4,12 @@ import br.com.hug.models.Endereco;
 import br.com.hug.models.Pessoa;
 import jakarta.persistence.Entity;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Psicologo extends Pessoa {
     private String crp;
 
@@ -19,7 +22,5 @@ public class Psicologo extends Pessoa {
 
     }*/
 
-    public Psicologo(Psicologo psicologo1) {
 
-    }
 }

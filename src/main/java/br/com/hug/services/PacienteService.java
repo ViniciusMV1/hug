@@ -56,7 +56,7 @@ public class PacienteService {
 
 
     public Paciente atualizar(PacienteRecord paciente) {
-        var pacienteAux = pacienteRepository.findById(cpf);
+        var pacienteAux = pacienteRepository.findById(paciente.cpf());
         if(pacienteAux.isPresent()){
             modelMapper.map(paciente, pacienteAux.get());
             return pacienteRepository.save(pacienteAux.get());
@@ -67,5 +67,11 @@ public class PacienteService {
     public boolean existePaciente(String cpf) {
         return pacienteRepository.existsById(cpf);
     }
+
+    public void delete(String cpf) {
+        pacienteRepository.deleteById(cpf);
+    }
+
 }
+
 
