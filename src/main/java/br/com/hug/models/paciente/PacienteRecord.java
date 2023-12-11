@@ -24,7 +24,7 @@ public record PacienteRecord(
         @NotNull
         @NotBlank
         @Email
-        @Size(max = 100)
+        @Size(max = 120)
         String email,
 
         @NotNull
