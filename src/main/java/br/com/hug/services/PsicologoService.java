@@ -21,7 +21,7 @@ public class PsicologoService {
     }
 
     public Psicologo buscar(String crp){
-        return psicologoRepository.getById(crp);
+        return psicologoRepository.findById(crp).get();
     }
 
     public void deletar(String crp){

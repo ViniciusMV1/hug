@@ -9,17 +9,21 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/pacientes")
+@CrossOrigin("*")
+@RequestMapping("/paciente")
 public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
     @PostMapping
-    public ResponseEntity criar(Paciente paciente){
-        var p = pacienteService.criar(paciente);
-        return ResponseEntity.ok(p);
+    public ResponseEntity criar(@RequestBody @Valid PacienteRecord paciente, UriComponentsBuilder builder){
+
+        var p = pacienteService.criar(paciente.converter());
+        var uri = builder.path("/paciente/{cpf}").buildAndExpand(p.getCpf()).toUri();
+        return ResponseEntity.created(uri).body(p);
     }
 
     @GetMapping
@@ -51,6 +55,8 @@ public class PacienteController {
         var aux = pacienteService.buscar(cpf);
         return ResponseEntity.ok(aux);
     }
+
+
 
 
 

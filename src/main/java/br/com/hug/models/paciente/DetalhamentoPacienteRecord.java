@@ -6,4 +6,6 @@ public record DetalhamentoPacienteRecord(String cpf, String nome, String email, 
     public DetalhamentoPacienteRecord(Paciente paciente) {
         this(paciente.getCpf(), paciente.getNome(), paciente.getEmail(), paciente.getTelefone(), paciente.getEndereco());
     }
+
+
 }

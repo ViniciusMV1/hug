@@ -1,8 +1,10 @@
 package br.com.hug.models.psicologo;
 
 import br.com.hug.models.Endereco;
-import br.com.hug.models.Pessoa;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -10,17 +12,19 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Psicologo extends Pessoa {
+@AllArgsConstructor
+public class Psicologo{
+    @Id
+    private String cpf;
+    private String nome;
+    private String email;
+    private String telefone;
+    @Embedded
+    private Endereco endereco;
     private String crp;
 
-    public Psicologo(String cpf, String nome,String email, String telefone, Endereco endereco, String crp) {
-        super(cpf, nome, email, telefone, endereco);
-        this.crp = crp;
-    }
 
-    /*public Psicologo(@NotNull @NotBlank @Size(min = 12, max = 12) @Pattern(regexp = "\\d{12}") String crp, @NotNull @NotBlank @Size(max = 100) String nome, @NotNull @NotBlank @Email @Size(max = 100) String email, @NotNull Endereco endereco, @NotNull @NotBlank @Size(max = 20) String telefone) {
 
-    }*/
 
 
 }

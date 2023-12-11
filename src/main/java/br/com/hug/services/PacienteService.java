@@ -28,13 +28,12 @@ public class PacienteService {
         this.pacienteRepository = pacienteRepository;
     }
 
-    @Transactional
     public Paciente criar(Paciente paciente) {
         return pacienteRepository.save(paciente);
     }
 
     public Paciente buscar(String cpf){
-        return pacienteRepository.getById(cpf);
+        return pacienteRepository.findById(cpf).get();
     }
 
     public void deletar(String cpf){
@@ -72,6 +71,9 @@ public class PacienteService {
         pacienteRepository.deleteById(cpf);
     }
 
-}
+    }
+
+
+
 
 

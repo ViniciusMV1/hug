@@ -31,11 +31,12 @@ public record PacienteRecord(
         @NotBlank
         @Size(max = 20)
         String telefone,
-        @NotNull
+
+        //@NotNull
         Endereco endereco) {
 
     public Paciente converter() {
-        return new Paciente(cpf(), nome(), email(), telefone(), endereco());
+        return new Paciente(cpf(), nome(), email(), telefone(), endereco(), null);
     }
 }
 

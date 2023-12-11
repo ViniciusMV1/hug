@@ -26,7 +26,7 @@ public class EmpresaService {
     }
 
     public Empresa buscar(String cnpj) {
-        return empresaRepository.getById(cnpj);
+        return empresaRepository.findById(cnpj).get();
     }
 
     public void deletar(String cnpj) {
